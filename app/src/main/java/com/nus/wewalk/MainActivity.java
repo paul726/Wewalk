@@ -2,15 +2,26 @@ package com.nus.wewalk;
 
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.health.connect.client.PermissionController;
+import androidx.health.platform.client.impl.permission.token.PermissionTokenManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nus.wewalk.databinding.ActivityMainBinding;
+import com.nus.wewalk.utilities.HealthConnectUtilKt;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,4 +45,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        HealthConnectUtilKt.checkAllPermissionGrand(new Function1<Boolean, Unit>() {
+            @Override
+            public Unit invoke(Boolean isGranted) {
+                if (!isGranted) {
+                    requestPermissions(new String[]{"android.permission.health.READ_STEPS"}, 0x11);
+                }
+                return null;
+            }
+        });
+    }
 }

@@ -10,6 +10,11 @@ lifecycleLivedataKtx = "2.6.1"
 lifecycleViewmodelKtx = "2.6.1"
 navigationFragment = "2.6.0"
 navigationUi = "2.6.0"
+health-connect = "1.1.0-alpha02"
+okhttp = "4.12.0"
+retrofit = "2.11.0"
+coroutines = "1.3.6"
+kotlin = "2.0.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -22,7 +27,16 @@ lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-lived
 lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version.ref = "navigationUi" }
+coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines"}
+
+health = { group = "androidx.health.connect", name = "connect-client", version.ref = "health-connect"}
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
+logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp"}
+converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
