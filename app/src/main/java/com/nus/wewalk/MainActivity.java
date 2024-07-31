@@ -2,12 +2,7 @@ package com.nus.wewalk;
 
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.health.connect.client.PermissionController;
-import androidx.health.platform.client.impl.permission.token.PermissionTokenManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -16,9 +11,6 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.nus.wewalk.databinding.ActivityMainBinding;
 import com.nus.wewalk.utilities.HealthConnectUtilKt;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -38,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                 R.id.navigation_dashboard,R.id.navigation_challenges, R.id.navigation_mine)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

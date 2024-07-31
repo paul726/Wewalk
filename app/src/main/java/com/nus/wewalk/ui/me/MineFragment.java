@@ -1,4 +1,4 @@
-package com.nus.wewalk.ui.notifications;
+package com.nus.wewalk.ui.me;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,22 +10,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.nus.wewalk.databinding.FragmentNotificationsBinding;
+import com.nus.wewalk.databinding.FragmentMineBinding;
 
-public class NotificationsFragment extends Fragment {
+public class MineFragment extends Fragment {
 
-    private FragmentNotificationsBinding binding;
+    private FragmentMineBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        NotificationsViewModel notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
+        MineViewModel mineViewModel =
+                new ViewModelProvider(this).get(MineViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentMineBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        mineViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

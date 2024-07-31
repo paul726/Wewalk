@@ -3,23 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.nus.wewalk.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/navigation_dashboard">
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.nus.wewalk.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
+    <fragment
+        android:id="@+id/navigation_goals"
+        android:name="com.nus.wewalk.ui.goals.GoalsFragment"
+        android:label="@string/title_goals"
+        tools:layout="@layout/fragment_goals" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.nus.wewalk.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_challenges"
+        android:name="com.nus.wewalk.ui.challenges.ChallengesFragment"
+        android:label="@string/title_challenges"
+        tools:layout="@layout/fragment_challenges" />
+
+    <fragment
+        android:id="@+id/navigation_mine"
+        android:name="com.nus.wewalk.ui.me.MineFragment"
+        android:label="@string/title_mine"
+        tools:layout="@layout/fragment_mine" />
 </navigation>
