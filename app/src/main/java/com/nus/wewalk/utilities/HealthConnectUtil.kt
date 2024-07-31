@@ -16,9 +16,9 @@ val healthPermissions = setOf(
 
 fun checkAllPermissionGrand(callback: (result: Boolean) -> Unit) {
     CoroutineScope(Dispatchers.IO).launch {
-        val result = WewalkApplication.healthConnectClient.permissionController.getGrantedPermissions()
+        val result = WewalkApplication.healthConnectClient?.permissionController?.getGrantedPermissions()
         withContext(Dispatchers.Main) {
-            callback.invoke(result.containsAll(healthPermissions))
+            callback.invoke(result?.containsAll(healthPermissions) == true)
         }
     }
 }
