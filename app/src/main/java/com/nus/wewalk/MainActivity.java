@@ -35,11 +35,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
         HealthConnectUtilKt.checkAllPermissionGrand(new Function1<Boolean, Unit>() {
             @Override
             public Unit invoke(Boolean isGranted) {
@@ -50,4 +46,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
