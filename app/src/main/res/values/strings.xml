@@ -4,4 +4,10 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_mine">My</string>
     <string name="title_goals">Goals</string>
+    <string name="login_title">Log In</string>
+    <string name="username">Username</string>
+    <string name="password">password</string>
+    <string name="confirm_password">double comfirm</string>
+    <string name="login">Login</string>
+    <string name="no_account">No account</string>
 </resources>
