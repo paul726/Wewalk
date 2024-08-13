@@ -30,21 +30,19 @@ public final class ApiResponseConverterFactory extends Converter.Factory {
             Retrofit retrofit
     ) {
         TypeToken<?> typeToken = TypeToken.getParameterized(ApiResponse.class, type);
+        Type apiResponseType = typeToken.getType();
+
         return new Converter<ResponseBody, Object>() {
             @Override
             public Object convert(ResponseBody responseBody) throws IOException {
                 String jsonString = responseBody.string();
-                JsonObject jsonObject = gson.fromJson(jsonString, JsonObject.class);
+                ApiResponse<?> apiResponse = gson.fromJson(jsonString, apiResponseType);
 
-                int code = jsonObject.get("code").getAsInt();
-                String msg = jsonObject.get("msg").getAsString();
-                Object data = gson.fromJson(jsonObject.get("data"), type);
-
-                if (code != 200) {
-                    throw new ApiException(code, msg);
+                if (apiResponse.getCode() != 200) {
+                    throw new ApiException(apiResponse.getCode(), apiResponse.getMsg());
                 }
 
-                return data;
+                return apiResponse.getData();
             }
         };
     }

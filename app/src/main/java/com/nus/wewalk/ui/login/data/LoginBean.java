@@ -10,4 +10,7 @@ public class LoginBean {
     @SerializedName("expires_in")
     private int expiresIn;
 
+    public String getAccessToken() {
+        return accessToken;
+    }
 }

@@ -5,6 +5,7 @@ import static com.nus.wewalk.utilities.Utils.hideStatusBar;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,9 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.nus.wewalk.MainActivity;
 import com.nus.wewalk.databinding.ActivityLoginBinding;
 import com.nus.wewalk.ui.login.data.LoginBean;
 import com.nus.wewalk.ui.register.RegisterActivity;
+import com.nus.wewalk.utilities.UserInstance;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -58,6 +61,23 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        viewModel.loginBeanLiveData.observe(this, new Observer<LoginBean>() {
+            @Override
+            public void onChanged(LoginBean loginBean) {
+                UserInstance.username = binding.etUsername.getText().toString();
+                UserInstance.token = loginBean.getAccessToken();
+
+                SharedPreferences sharedPref = getSharedPreferences("user", MODE_PRIVATE);
+                sharedPref.edit()
+                        .putString("username", UserInstance.username)
+                        .putString("token", UserInstance.token)
+                        .apply();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
