@@ -19,7 +19,7 @@ public class LoginViewModel extends ViewModel {
 
     public void login(String email, String password) {
         Map<String, Object> params = new HashMap<>();
-        params.put("user_name", email);
+        params.put("username", email);
         params.put("password", password);
         HttpUtil.restAPI.login(params).enqueue(new Callback<LoginBean>() {
             @Override

@@ -3,18 +3,24 @@ package com.nus.wewalk.net;
 import android.util.Log;
 
 
+import com.google.gson.Gson;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HttpUtil {
 
     public static RestAPI restAPI;
-    private static String BASE_URL = "";
+    private static String BASE_URL = "http://54.254.244.55:8080/";
 
     static {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
@@ -27,8 +33,9 @@ public class HttpUtil {
         httpLoggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .readTimeout(60, TimeUnit.MILLISECONDS)
-                .connectTimeout(60, TimeUnit.MILLISECONDS);
+                .hostnameVerifier((hostname, sslSession) -> true)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS);
 
         builder.addInterceptor(httpLoggingInterceptor);
 

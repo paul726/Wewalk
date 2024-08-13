@@ -8,12 +8,15 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
 
 public final class ApiResponseConverterFactory extends Converter.Factory {
 
+    private static final MediaType MEDIA_TYPE = MediaType.get("application/json; charset=UTF-8");
     private final Gson gson;
 
     public ApiResponseConverterFactory() {
@@ -42,6 +45,17 @@ public final class ApiResponseConverterFactory extends Converter.Factory {
                 }
 
                 return data;
+            }
+        };
+    }
+
+    @Override
+    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
+        return new Converter<Object, RequestBody>() {
+            @Override
+            public RequestBody convert(Object value) throws IOException {
+                String json = gson.toJson(value);
+                return RequestBody.create(MEDIA_TYPE, json);
             }
         };
     }
