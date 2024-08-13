@@ -1,5 +1,7 @@
 package com.nus.wewalk;
 
+import static com.nus.wewalk.utilities.Utils.hideStatusBar;
+
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,15 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        hideStatusBar(this);
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                 R.id.navigation_dashboard, R.id.navigation_goals, R.id.navigation_challenges, R.id.navigation_mine)
-                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         HealthConnectUtilKt.checkAllPermissionGrand(new Function1<Boolean, Unit>() {

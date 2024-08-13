@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/dashboard"
+        android:icon="@mipmap/ic_dashboard"
         android:title="@string/title_dashboard" />
 
     <item
         android:id="@+id/navigation_goals"
-        android:icon="@drawable/goals"
+        android:icon="@mipmap/ic_goals"
         android:title="@string/title_goals" />
 
     <item
         android:id="@+id/navigation_challenges"
-        android:icon="@drawable/challenge"
+        android:icon="@mipmap/ic_challenges"
         android:title="@string/title_challenges" />
 
     <item
         android:id="@+id/navigation_mine"
-        android:icon="@drawable/user"
+        android:icon="@mipmap/ic_mine"
         android:title="@string/title_mine" />
 
 </menu>

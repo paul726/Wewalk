@@ -20,8 +20,6 @@ public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding binding;
     private DashboardViewModel dashboardViewModel;
 
-    private NotificationAdapter notificationAdapter;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         dashboardViewModel =
@@ -35,37 +33,8 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setupRecyclerView();
-        observeViewModel();
     }
 
-    private void setupRecyclerView() {
-        notificationAdapter = new NotificationAdapter();
-        binding.rvNotifications.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.rvNotifications.setAdapter(notificationAdapter);
-    }
-
-    private void observeViewModel() {
-        dashboardViewModel.stepCount.observe(getViewLifecycleOwner(), steps -> {
-            binding.tvStepCount.setText(String.valueOf(steps));
-            binding.progressSteps.setProgress(steps);
-            binding.progressSteps.setMax(dashboardViewModel.getDailyStepGoal());
-        });
-
-        dashboardViewModel.calories.observe(getViewLifecycleOwner(), calories -> {
-            binding.tvCalories.setText("Calories: " + calories + " kcal");
-        });
-
-        dashboardViewModel.distance.observe(getViewLifecycleOwner(), distance -> {
-            binding.tvDistance.setText("Distance: " + String.format("%.2f", distance) + " km");
-        });
-
-        dashboardViewModel.notifications.observe(getViewLifecycleOwner(), notifications -> {
-            notificationAdapter.setNotifications(notifications);
-        });
-
-        dashboardViewModel.loadDashboardData();
-    }
 
     @Override
     public void onDestroyView() {
