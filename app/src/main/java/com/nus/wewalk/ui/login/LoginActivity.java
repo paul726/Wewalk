@@ -1,10 +1,17 @@
 package com.nus.wewalk.ui.login;
 
+import static com.nus.wewalk.utilities.Utils.hideStatusBar;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsetsController;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        hideStatusBar(this);
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
@@ -42,50 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 viewModel.login(username, password);
-            }
-        });
-
-        registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
-            @Override
-            public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle bundle) {
-
-            }
-
-            @Override
-            public void onActivityStarted(@NonNull Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityResumed(@NonNull Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityPaused(@NonNull Activity activity) {
-
-            }
-
-            @Override
-            public void onActivityStopped(@NonNull Activity activity) {
-
-            }
-
-            @Override
-            public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle bundle) {
-
-            }
-
-            @Override
-            public void onActivityDestroyed(@NonNull Activity activity) {
-
-            }
-        });
-
-        viewModel.loginBeanLiveData.observe(this, new Observer<LoginBean>() {
-            @Override
-            public void onChanged(LoginBean loginBean) {
-
             }
         });
 
