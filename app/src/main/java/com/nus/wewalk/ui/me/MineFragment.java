@@ -12,10 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.nus.wewalk.R;
 import com.nus.wewalk.databinding.FragmentMineBinding;
 import com.nus.wewalk.ui.login.LoginActivity;
 
-public class MineFragment extends Fragment {
+public class MineFragment extends Fragment implements View.OnClickListener {
 
     private FragmentMineBinding binding;
 
@@ -32,18 +33,31 @@ public class MineFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.textNotifications.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        binding.btEdit.setOnClickListener(this);
+        binding.btFriends.setOnClickListener(this);
+        binding.btHelp.setOnClickListener(this);
+        binding.btSet.setOnClickListener(this);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.bt_edit) {
+            startActivity(new Intent(getActivity(), PersonActivity.class));
+        } else if (v.getId() == R.id.bt_friends) {
+            //friends
+            startActivity(new Intent(getActivity(), FriendsActivity.class));
+        } else if (v.getId() == R.id.bt_help) {
+            //help
+            startActivity(new Intent(getActivity(), SupportActivity.class));
+        } else if (v.getId() == R.id.bt_set) {
+            //set
+            startActivity(new Intent(getActivity(), SetActivity.class));
+        }
     }
 }

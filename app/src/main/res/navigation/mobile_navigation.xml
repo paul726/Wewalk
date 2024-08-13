@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/navigation_challenges"
-        android:name="com.nus.wewalk.ui.challenges.ChallengesFragment"
+        android:name="com.nus.wewalk.ui.challenges.LeaderboardFragment"
         android:label="@string/title_challenges"
         tools:layout="@layout/fragment_challenges" />
 
