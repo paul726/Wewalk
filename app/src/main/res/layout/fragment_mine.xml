@@ -28,6 +28,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/re_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -35,6 +36,7 @@
             android:layout_marginRight="15dp">
 
             <ImageView
+                android:id="@+id/iv_bg"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:scaleType="fitXY"
@@ -49,12 +51,14 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/re_head"
             android:layout_width="95dp"
             android:layout_height="95dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="150dp">
 
             <ImageView
+                android:id="@+id/iv_head"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true"

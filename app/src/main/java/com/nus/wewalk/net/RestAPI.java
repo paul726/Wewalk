@@ -1,6 +1,7 @@
 package com.nus.wewalk.net;
 
 import com.nus.wewalk.ui.challenges.RankBean;
+import com.nus.wewalk.ui.dashboard.Notification;
 import com.nus.wewalk.ui.login.data.LoginBean;
 import com.nus.wewalk.ui.me.UserInfoBean;
 
@@ -18,11 +19,11 @@ import retrofit2.http.Query;
 
 public interface RestAPI {
 
-    @POST("api/login2")
+    @POST("login2")
     Call<LoginBean> login(@Body Map<String, Object> params);
 
-    @POST("api/register")
-    Call<Boolean> register(@Body Map<String, Object> params);
+    @POST("register")
+    Call<ApiResponse> register(@Body Map<String, Object> params);
 
 
     @GET("system/user/profile")
@@ -52,6 +53,14 @@ public interface RestAPI {
 
     @GET("history/getFriendStepRank")
     Call<List<RankBean>> getFriendStepRank(@Query("userId") String userId);
+
+
+    @GET("system/notice/list")
+    Call<List<Notification>> noticeList(@Query("pageSize") int pageSize, @Query("pageSize")int pageNum);
+
+
+    @GET("system/notice/count")
+    Call<String> countNum();
 
 
 

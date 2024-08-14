@@ -23,4 +23,5 @@ public final class ApiResponse<T> {
     public T getData() {
         return data;
     }
+
 }

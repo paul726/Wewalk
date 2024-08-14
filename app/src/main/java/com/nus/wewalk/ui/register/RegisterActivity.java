@@ -17,6 +17,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.nus.wewalk.databinding.ActivityRegisterBinding;
+import com.nus.wewalk.net.ApiResponse;
 import com.nus.wewalk.ui.login.LoginActivity;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -59,19 +60,18 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Please ensure password if correct ", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 viewModel.register(username, password);
             }
         });
 
-        viewModel.liveData.observe(this, new Observer<Boolean>() {
+        viewModel.liveData.observe(this, new Observer<ApiResponse>() {
             @Override
-            public void onChanged(Boolean isSuccessful) {
-                if (isSuccessful) {
+            public void onChanged(ApiResponse isSuccessful) {
+                if (isSuccessful.getCode() == 200) {
                     Toast.makeText(RegisterActivity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
                     finish();
-                } else  {
-                    Toast.makeText(RegisterActivity.this, "Registration failed:", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(RegisterActivity.this, isSuccessful.getMsg(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

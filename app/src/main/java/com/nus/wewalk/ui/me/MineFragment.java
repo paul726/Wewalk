@@ -39,6 +39,9 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         binding.btFriends.setOnClickListener(this);
         binding.btHelp.setOnClickListener(this);
         binding.btSet.setOnClickListener(this);
+        binding.reBg.setOnClickListener(this);
+        binding.reHead.setOnClickListener(this);
+        //
         mineViewModel.getUserInfo();
 
         //数据展示
@@ -69,6 +72,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         } else if (v.getId() == R.id.bt_set) {
             //set
             startActivity(new Intent(getActivity(), SetActivity.class));
+        } else if (v.getId() == R.id.re_bg) {
+            //bg
+        } else if (v.getId() == R.id.re_head) {
+            //head
         }
     }
 

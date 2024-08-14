@@ -26,6 +26,7 @@ import com.nus.wewalk.databinding.ActivityLoginBinding;
 import com.nus.wewalk.ui.login.data.LoginBean;
 import com.nus.wewalk.ui.register.RegisterActivity;
 import com.nus.wewalk.utilities.UserInstance;
+import com.nus.wewalk.utilities.XShareCacheUtils;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -41,39 +42,25 @@ public class LoginActivity extends AppCompatActivity {
         hideStatusBar(this);
 
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
-
-        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = binding.etUsername.getText().toString();
-                String password = binding.etPassword.getText().toString();
-                if (username.trim().isEmpty() || password.trim().isEmpty()) {
-                    Toast.makeText(getBaseContext(), "please input email and password", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                viewModel.login(username, password);
+        binding.btnSubmit.setOnClickListener(view -> {
+            String username = binding.etUsername.getText().toString();
+            String password = binding.etPassword.getText().toString();
+            if (username.trim().isEmpty() || password.trim().isEmpty()) {
+                Toast.makeText(getBaseContext(), "please input email and password", Toast.LENGTH_SHORT).show();
+                return;
             }
+            viewModel.login(username, password);
         });
-
-        binding.tvToggle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
+        binding.tvToggle.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
 
         viewModel.loginBeanLiveData.observe(this, new Observer<LoginBean>() {
             @Override
             public void onChanged(LoginBean loginBean) {
-                UserInstance.username = binding.etUsername.getText().toString();
-                UserInstance.token = loginBean.getAccessToken();
-
-                SharedPreferences sharedPref = getSharedPreferences("user", MODE_PRIVATE);
-                sharedPref.edit()
-                        .putString("username", UserInstance.username)
-                        .putString("token", UserInstance.token)
-                        .apply();
+                XShareCacheUtils.getInstance().putString("token", loginBean.getAccess_token());
+                XShareCacheUtils.getInstance().putString("name", binding.etUsername.getText().toString());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

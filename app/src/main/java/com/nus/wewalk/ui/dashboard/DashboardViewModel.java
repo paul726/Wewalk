@@ -1,40 +1,52 @@
 package com.nus.wewalk.ui.dashboard;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.Arrays;
+import com.nus.wewalk.net.HttpUtil;
+
 import java.util.List;
-import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DashboardViewModel extends ViewModel {
 
-    MutableLiveData<Integer> stepCount = new MutableLiveData<>();
-    MutableLiveData<Integer> calories = new MutableLiveData<>();
-    MutableLiveData<Double> distance = new MutableLiveData<>();
     MutableLiveData<List<Notification>> notifications = new MutableLiveData<>();
-    private final int dailyStepGoal = 10000;
+    MutableLiveData<String> countNum = new MutableLiveData<>();
 
-    public int getDailyStepGoal() {
-        return dailyStepGoal;
+    /**
+     * 通知列表
+     * @param page
+     */
+    public void getNotific(int page) {
+        HttpUtil.restAPI.noticeList(page, 20).enqueue(new Callback<List<Notification>>() {
+            @Override
+            public void onResponse(Call<List<Notification>> call, Response<List<Notification>> response) {
+                notifications.setValue(response.body());
+            }
+            @Override
+            public void onFailure(Call<List<Notification>> call, Throwable throwable) {
+                notifications.setValue(null);
+            }
+        });
     }
 
-    public void loadDashboardData() {
-        // Mock data generation
-        Random random = new Random();
-        int steps = random.nextInt(dailyStepGoal);
-        stepCount.setValue(steps);
-        calories.setValue((int)(steps * 0.04)); // Assuming 0.04 calories per step
-        distance.setValue(steps * 0.0008); // Assuming 0.8 meters per step
-
-        List<Notification> notificationList = Arrays.asList(
-                new Notification(Notification.Type.STEP_REMINDER, "Almost there!", "You're " + (dailyStepGoal - steps) + " steps away from your daily goal."),
-                new Notification(Notification.Type.ACHIEVEMENT, "New Badge Earned", "Congratulations! You've earned the 'Early Bird' badge."),
-                new Notification(Notification.Type.FRIEND_ACTIVITY, "John completed a challenge", "Your friend John just completed the 'Weekend Warrior' challenge."),
-                new Notification(Notification.Type.SYSTEM_UPDATE, "App Update Available", "A new version of WeWalk is available with exciting new features!"),
-                new Notification(Notification.Type.CHALLENGE_INVITATION, "New Challenge", "Join the 'Step Up September' challenge and compete with friends!")
-        );
-        notifications.setValue(notificationList);
+    /**
+     * 通知数量
+     */
+    public void countNum() {
+        HttpUtil.restAPI.countNum().enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                countNum.setValue(response.body());
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable throwable) {
+                countNum.setValue(null);
+            }
+        });
     }
+
 }

@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Wewalk</string>
-    <string name="title_challenges">Challenges</string>
+    <string name="title_challenges">Leaderboard</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_mine">My</string>
+    <string name="title_mine">Profile</string>
     <string name="title_goals">Goals</string>
     <string name="login_title">Log In</string>
     <string name="username">User name</string>

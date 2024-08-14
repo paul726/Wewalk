@@ -4,15 +4,20 @@ import android.util.Log;
 
 
 import com.google.gson.Gson;
+import com.nus.wewalk.utilities.XShareCacheUtils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -38,6 +43,14 @@ public class HttpUtil {
                 .connectTimeout(60, TimeUnit.SECONDS);
 
         builder.addInterceptor(httpLoggingInterceptor);
+        builder.addInterceptor(chain -> {
+            Request original = chain.request();
+            Request request = original.newBuilder()
+                    .header("Authorization", "Bearer " + XShareCacheUtils.getInstance().getString("token"))
+                    .method(original.method(), original.body())
+                    .build();
+            return chain.proceed(request);
+        });
 
         OkHttpClient okHttpClient = builder.build();
 

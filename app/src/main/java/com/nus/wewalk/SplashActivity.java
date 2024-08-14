@@ -3,12 +3,15 @@ package com.nus.wewalk;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nus.wewalk.ui.login.LoginActivity;
 import com.nus.wewalk.utilities.UserInstance;
+import com.nus.wewalk.utilities.XShareCacheUtils;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -17,18 +20,14 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        SharedPreferences sharepref = getSharedPreferences("user", MODE_PRIVATE);
-        String token = sharepref.getString("token", null);
-        if (token == null) {
-            // go to login page
+        String token = XShareCacheUtils.getInstance().getString("token");
+        if (TextUtils.isEmpty(token)) {
             startActivity(new Intent(this, LoginActivity.class));
         } else {
             // go to main page
-            UserInstance.username = sharepref.getString("username", "");
-            UserInstance.token = token;
             startActivity(new Intent(this, MainActivity.class));
         }
-
         finish();
     }
+
 }
