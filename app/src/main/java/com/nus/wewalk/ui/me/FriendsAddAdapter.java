@@ -40,7 +40,7 @@ public class FriendsAddAdapter extends RecyclerView.Adapter<FriendsAddAdapter.Vi
 
         UserInfoBean userInfoBean = dataList.get(position);
         holder.mTvName.setText(userInfoBean.getUserName());
-        Glide.with(mContext).load(userInfoBean.getAvatar()).centerCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        Glide.with(mContext).load(userInfoBean.getAvatar()).circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onSuccess(userInfoBean, position);

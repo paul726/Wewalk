@@ -29,8 +29,7 @@
             android:id="@+id/ic_head"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:src="@mipmap/ic_head" />
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -38,7 +37,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:text="kathrynm"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
@@ -46,7 +44,6 @@
             android:id="@+id/tv_bu_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1,1134"
             android:textColor="@color/black"
             android:textSize="14sp" />
 

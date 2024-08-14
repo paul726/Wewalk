@@ -1,5 +1,6 @@
 package com.nus.wewalk.net;
 
+import com.nus.wewalk.ui.challenges.RankBean;
 import com.nus.wewalk.ui.login.data.LoginBean;
 import com.nus.wewalk.ui.me.UserInfoBean;
 
@@ -41,9 +42,6 @@ public interface RestAPI {
 
 
 
-
-
-
     @GET("history/getFriends")
     Call<List<UserInfoBean>> getFriends(@Query("userId") String userId, @Query("userName") String userName);
 
@@ -53,7 +51,7 @@ public interface RestAPI {
 
 
     @GET("history/getFriendStepRank")
-    Call<List<UserInfoBean>> getFriendStepRank(@Query("userId") String userId);
+    Call<List<RankBean>> getFriendStepRank(@Query("userId") String userId);
 
 
 

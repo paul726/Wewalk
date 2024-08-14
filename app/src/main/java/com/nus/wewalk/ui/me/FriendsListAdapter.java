@@ -38,7 +38,7 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         UserInfoBean userInfoBean = dataList.get(position);
         holder.mTvName.setText(userInfoBean.getUserName());
-        Glide.with(mContext).load(userInfoBean.getAvatar()).centerCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        Glide.with(mContext).load(userInfoBean.getAvatar()).circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
     }
 
     @Override

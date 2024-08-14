@@ -12,6 +12,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.bumptech.glide.Glide;
+import com.nus.wewalk.R;
 import com.nus.wewalk.databinding.FragmentLeaderBinding;
 import com.nus.wewalk.ui.me.MineViewModel;
 import com.nus.wewalk.ui.me.UserInfoBean;
@@ -36,6 +38,7 @@ public class LeaderboardFragment extends Fragment {
         View root = binding.getRoot();
         return root;
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -46,13 +49,32 @@ public class LeaderboardFragment extends Fragment {
         //数据请求
         String uid = XShareCacheUtils.getInstance().getString("uid");
         challengesViewModel.getFriendStepRank(uid);
-
         //
-        challengesViewModel.rankListLiveData.observe(getActivity(), new Observer<List<UserInfoBean>>() {
+        challengesViewModel.rankListLiveData.observe(getActivity(), new Observer<List<RankBean>>() {
             @Override
-            public void onChanged(List<UserInfoBean> userInfoBeans) {
-//                leaderListAdapter = new LeaderListAdapter(getActivity(), list);
-//                binding.recycle.setAdapter(leaderListAdapter);
+            public void onChanged(List<RankBean> rankBeanList) {
+                if (!rankBeanList.isEmpty()) {
+                    if (rankBeanList.get(0) != null) {
+                        binding.tvOneName.setText(rankBeanList.get(0).getUserName());
+                        binding.tvOneNum.setText(rankBeanList.get(0).getSteps());
+                        Glide.with(getActivity()).load(rankBeanList.get(0).getAvatar())
+                                .circleCrop().placeholder(R.mipmap.ic_head).into(binding.ivOne);
+                    }
+                    if (rankBeanList.size() > 1 && rankBeanList.get(1) != null) {
+                        binding.tvTwoName.setText(rankBeanList.get(1).getUserName());
+                        binding.tvTwoNum.setText(rankBeanList.get(1).getSteps());
+                        Glide.with(getActivity()).load(rankBeanList.get(1).getAvatar())
+                                .circleCrop().placeholder(R.mipmap.ic_head).into(binding.ivTwo);
+                    }
+                    if (rankBeanList.size() > 2 && rankBeanList.get(2) != null) {
+                        binding.tvThreeName.setText(rankBeanList.get(2).getUserName());
+                        binding.tvThreeNun.setText(rankBeanList.get(2).getSteps());
+                        Glide.with(getActivity()).load(rankBeanList.get(2).getAvatar())
+                                .circleCrop().placeholder(R.mipmap.ic_head).into(binding.ivThree);
+                    }
+                    leaderListAdapter = new LeaderListAdapter(getActivity(), rankBeanList);
+                    binding.recycle.setAdapter(leaderListAdapter);
+                }
             }
         });
     }

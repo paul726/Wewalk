@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.nus.wewalk.R;
 
 import java.util.List;
@@ -19,10 +20,10 @@ import java.util.List;
  */
 public class LeaderListAdapter extends RecyclerView.Adapter<LeaderListAdapter.ViewHolder> {
 
-    private List<String> dataList;
+    private List<RankBean> dataList;
     private Context mContext;
 
-    public LeaderListAdapter(Context mContext, List<String> dataList) {
+    public LeaderListAdapter(Context mContext, List<RankBean> dataList) {
         this.dataList = dataList;
         this.mContext = mContext;
     }
@@ -35,11 +36,17 @@ public class LeaderListAdapter extends RecyclerView.Adapter<LeaderListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        int num = position + 4;
-        holder.mTvNum.setText("" + num);
-        if (position == 0) {
-            holder.mLin.setBackgroundResource(R.drawable.bg_lead_line);
-        }
+        int num = position + 3;
+        int num1 = position + 4;
+        holder.mTvNum.setText("" + num1);
+        RankBean rankBean = dataList.get(num);
+        holder.mTvName.setText(rankBean.getUserName());
+        Glide.with(mContext).load(rankBean.getAvatar())
+                .circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+
+//        if (position == 0) {
+//            holder.mLin.setBackgroundResource(R.drawable.bg_lead_line);
+//        }
     }
 
     @Override
