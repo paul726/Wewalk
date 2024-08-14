@@ -52,7 +52,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     private void setupRecyclerView() {
         String uid = XShareCacheUtils.getInstance().getString("uid");
-        mineViewModel.getFriends("3", "");
+        mineViewModel.getFriends(uid, "");
 
         mineViewModel.friendsListLiveData.observe(this, new Observer<List<UserInfoBean>>() {
             @Override

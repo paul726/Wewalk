@@ -1,19 +1,35 @@
 package com.nus.wewalk.ui.challenges;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.nus.wewalk.net.HttpUtil;
+import com.nus.wewalk.ui.me.UserInfoBean;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ChallengesViewModel extends ViewModel {
 
-    private final MutableLiveData<String> mText;
+    MutableLiveData<List<UserInfoBean>> rankListLiveData = new MutableLiveData<>();
 
-    public ChallengesViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is challenges fragment");
-    }
+    /**
+     * 查询好友步数排行榜
+     */
+    public void getFriendStepRank(String userId) {
+        HttpUtil.restAPI.getFriendStepRank(userId).enqueue(new Callback<List<UserInfoBean>>() {
+            @Override
+            public void onResponse(Call<List<UserInfoBean>> call, Response<List<UserInfoBean>> response) {
+                rankListLiveData.setValue(response.body());
+            }
 
-    public LiveData<String> getText() {
-        return mText;
+            @Override
+            public void onFailure(Call<List<UserInfoBean>> call, Throwable throwable) {
+                rankListLiveData.setValue(null);
+            }
+        });
     }
 }

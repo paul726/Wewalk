@@ -52,4 +52,9 @@ public interface RestAPI {
     Call<ApiResponse> addFriend(@Body Map<String, Object> params);
 
 
+    @GET("history/getFriendStepRank")
+    Call<List<UserInfoBean>> getFriendStepRank(@Query("userId") String userId);
+
+
+
 }

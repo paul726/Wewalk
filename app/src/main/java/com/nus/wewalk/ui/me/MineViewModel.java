@@ -121,11 +121,13 @@ public class MineViewModel extends ViewModel {
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 saveBeanLiveData.setValue(response.body());
             }
+
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable throwable) {
                 saveBeanLiveData.setValue(null);
             }
         });
     }
+
 
 }

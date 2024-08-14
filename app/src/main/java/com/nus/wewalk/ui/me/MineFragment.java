@@ -33,7 +33,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SystemBarUtils.setStatusBarColor(getActivity(), binding.statusBar);
-        mineViewModel = new ViewModelProvider(this).get(MineViewModel.class);
+        mineViewModel = new ViewModelProvider(getActivity()).get(MineViewModel.class);
 
         binding.btEdit.setOnClickListener(this);
         binding.btFriends.setOnClickListener(this);
@@ -46,10 +46,11 @@ public class MineFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onChanged(UserInfoBean loginBean) {
                 if (loginBean != null) {
-                    if (binding != null) {
-                        binding.tvNickName.setText(loginBean.getUserName());
-                    }
                     XShareCacheUtils.getInstance().putString("uid", loginBean.getUserId());
+                    if (binding != null) {
+                        binding.tvNickNames.setText(loginBean.getUserName());
+
+                    }
                 }
             }
         });
@@ -74,7 +75,7 @@ public class MineFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-//        binding = null;
+        binding = null;
     }
 
 }
