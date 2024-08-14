@@ -6,24 +6,19 @@
     android:background="@mipmap/login_backg"
     android:padding="16dp">
 
-    <TextView
+    <ImageView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="65dp"
-        android:text="SIGN IN"
-        android:textColor="#ff60a7a7"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:src="@mipmap/ic_denglu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Wewalk"
-        android:textColor="#ff858585"
-        android:textSize="20sp"
+        android:src="@mipmap/ic_huanying"
         app:layout_constraintStart_toStartOf="@id/tvTitle"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
