@@ -180,7 +180,7 @@
                     android:layout_width="55dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center"
-                    android:src="@mipmap/ic_lead_two" />
+                    android:src="@mipmap/ic_lead_three" />
             </FrameLayout>
         </RelativeLayout>
     </LinearLayout>
