@@ -1,11 +1,13 @@
 package com.nus.wewalk.net;
 
 import com.nus.wewalk.ui.login.data.LoginBean;
+import com.nus.wewalk.ui.me.UserInfoBean;
 
 import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RestAPI {
@@ -15,5 +17,12 @@ public interface RestAPI {
 
     @POST("api/register")
     Call<Boolean> register(@Body Map<String, Object> params);
+
+
+    @GET("system/user/profile")
+    Call<UserInfoBean> getUserInfo();
+
+    @POST("history/updateProfile")
+    Call<Boolean> saveUserInfo(@Body Map<String, Object> params);
 
 }

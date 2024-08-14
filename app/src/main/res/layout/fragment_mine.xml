@@ -64,11 +64,11 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/tv_nick_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:text="kathrynm"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -80,11 +80,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
         android:drawableLeft="@mipmap/ic_me_edit"
         android:drawableRight="@mipmap/ic_me_right"
         android:drawablePadding="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:text="Edit profile"
         android:textColor="@color/black"
         android:textSize="13sp" />

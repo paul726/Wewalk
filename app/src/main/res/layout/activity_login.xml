@@ -6,66 +6,65 @@
     android:background="@mipmap/login_backg"
     android:padding="16dp">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
         android:text="SIGN IN"
-        android:textStyle="bold"
         android:textColor="#ff60a7a7"
-        android:textSize="34sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="65dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to Wewalk"
         android:textColor="#ff858585"
-        android:textSize="12sp"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/tvTitle"
-        />
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/username"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/input_background"
         android:drawableStart="@drawable/ic_user"
         android:drawablePadding="10dp"
+        android:hint="@string/username"
         android:paddingStart="15dp"
-        android:background="@drawable/input_background"
-        app:layout_constraintBottom_toTopOf="@id/etPassword"/>
+        app:layout_constraintBottom_toTopOf="@id/etPassword" />
 
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/password"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/input_background"
         android:drawableStart="@drawable/ic_password"
         android:drawablePadding="10dp"
-        android:paddingStart="15dp"
-        android:background="@drawable/input_background"
+        android:hint="@string/password"
         android:inputType="textPassword"
-        android:layout_marginTop="16dp"
+        android:paddingStart="15dp"
         app:layout_constraintBottom_toTopOf="@id/btnSubmit"
-        app:passwordToggleEnabled="true"
-        android:layout_marginBottom="80dp"/>
+        app:passwordToggleEnabled="true" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginBottom="3dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="3dp"
         android:background="@drawable/white_bg"
-        android:textColor="#60A7A7"
         android:text="@string/login"
+        android:textColor="#60A7A7"
         app:layout_constraintBottom_toTopOf="@id/tvToggle" />
 
     <TextView
@@ -73,11 +72,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/no_account"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="50dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

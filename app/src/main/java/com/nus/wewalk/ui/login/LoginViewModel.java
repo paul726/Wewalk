@@ -26,7 +26,6 @@ public class LoginViewModel extends ViewModel {
             public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
                 loginBeanLiveData.setValue(response.body());
             }
-
             @Override
             public void onFailure(Call<LoginBean> call, Throwable throwable) {
                 loginBeanLiveData.setValue(null);

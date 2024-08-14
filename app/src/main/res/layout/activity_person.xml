@@ -23,12 +23,12 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_nick_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_5"
             android:background="@drawable/bg_gray_shen_five"
             android:padding="15dp"
-            android:text="kathrynm"
             android:textColor="#828282"
             android:textSize="14sp" />
     </LinearLayout>
@@ -47,13 +47,15 @@
             android:textColor="#828282"
             android:textSize="14sp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/et_ade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_5"
+            android:inputType="number"
+            android:maxLines="1"
             android:background="@drawable/bg_green_write_line"
             android:padding="15dp"
-            android:text="kathrynm"
             android:textColor="#828282"
             android:textSize="14sp" />
     </LinearLayout>
@@ -74,6 +76,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_nan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_5"
@@ -87,6 +90,7 @@
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/tv_nv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -123,14 +127,15 @@
             android:background="@drawable/bg_green_write_line"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
+                android:id="@+id/et_sg"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="number"
+                android:background="@null"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="163"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -167,14 +172,15 @@
             android:background="@drawable/bg_green_write_line"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
+                android:id="@+id/et_tz"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:inputType="number"
+                android:background="@null"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="63"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -190,7 +196,7 @@
 
 
     <TextView
-        android:id="@+id/bt_savr"
+        android:id="@+id/bt_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"

@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "please input email and password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 viewModel.login(username, password);
             }
         });

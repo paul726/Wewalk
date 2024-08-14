@@ -28,9 +28,7 @@ public class RegisterViewModel extends ViewModel {
                 } else {
                     liveData.setValue(false);
                 }
-
             }
-
             @Override
             public void onFailure(Call<Boolean> call, Throwable throwable) {
                 liveData.setValue(false);

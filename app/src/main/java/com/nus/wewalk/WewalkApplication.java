@@ -6,6 +6,8 @@ import android.net.Uri;
 
 import androidx.health.connect.client.HealthConnectClient;
 
+import com.nus.wewalk.utilities.XShareCacheUtils;
+
 public class WewalkApplication extends Application {
 
     public static HealthConnectClient healthConnectClient;
@@ -29,5 +31,8 @@ public class WewalkApplication extends Application {
         }
 
         healthConnectClient = HealthConnectClient.getOrCreate(this);
+
+        //
+        XShareCacheUtils.getInstance().init(this);
     }
 }
