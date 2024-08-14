@@ -39,9 +39,10 @@ public final class ApiResponseConverterFactory extends Converter.Factory {
                 ApiResponse<?> apiResponse = gson.fromJson(jsonString, apiResponseType);
 
                 if (apiResponse.getCode() != 200) {
-                    throw new ApiException(apiResponse.getCode(), apiResponse.getMsg());
+                    //todo 修改了一下
+//                    throw new ApiException(apiResponse.getCode(), apiResponse.getMsg());
+                    return apiResponse;
                 }
-
                 return apiResponse.getData();
             }
         };

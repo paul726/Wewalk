@@ -4,11 +4,13 @@ public class UserInfoBean {
 
     private String userId;
     private String userName;
+    private String nickName;
     private int sex;
     private String status;
     private int age;
     private String height;
     private String weight;
+    private String avatar;
 
     public String getUserId() {
         return userId;
@@ -64,5 +66,22 @@ public class UserInfoBean {
 
     public void setWeight(String weight) {
         this.weight = weight;
+    }
+
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 }

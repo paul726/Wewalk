@@ -12,7 +12,15 @@ public final class ApiResponse<T> {
         this.data = data;
     }
 
-    public int getCode() { return code; }
-    public String getMsg() { return msg; }
-    public T getData() { return data; }
+    public int getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public T getData() {
+        return data;
+    }
 }

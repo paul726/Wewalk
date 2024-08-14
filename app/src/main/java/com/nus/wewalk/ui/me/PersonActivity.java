@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.nus.wewalk.R;
 import com.nus.wewalk.databinding.ActivityPersonBinding;
+import com.nus.wewalk.net.ApiResponse;
 import com.nus.wewalk.ui.register.RegisterActivity;
 import com.nus.wewalk.utilities.XShareCacheUtils;
 
@@ -30,6 +31,7 @@ public class PersonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityPersonBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        mineViewModel = new ViewModelProvider(this).get(MineViewModel.class);
         initView();
     }
 
@@ -37,7 +39,6 @@ public class PersonActivity extends AppCompatActivity {
         binding.top.ivBack.setOnClickListener(v -> finish());
         binding.top.tvTitle.setText("Personal");
 
-        mineViewModel = new ViewModelProvider(this).get(MineViewModel.class);
 
         //请求数据
         mineViewModel.getUserInfo();
@@ -46,7 +47,7 @@ public class PersonActivity extends AppCompatActivity {
             @Override
             public void onChanged(UserInfoBean loginBean) {
                 binding.tvNickName.setText(loginBean.getUserName());
-                binding.etAde.setText(loginBean.getAge());
+                binding.etAde.setText(loginBean.getAge() + "");
                 binding.etSg.setText(loginBean.getHeight());
                 binding.etTz.setText(loginBean.getWeight());
                 //性别：1-男 2-女
@@ -86,10 +87,10 @@ public class PersonActivity extends AppCompatActivity {
             binding.tvNan.setBackgroundResource(R.drawable.bg_gray_shen_line_five);
         });
 
-        mineViewModel.saveBeanLiveData.observe(this, new Observer<Boolean>() {
+        mineViewModel.saveBeanLiveData.observe(this, new Observer<ApiResponse>() {
             @Override
-            public void onChanged(Boolean isSuccessful) {
-                if (isSuccessful) {
+            public void onChanged(ApiResponse apiResponse) {
+                if (apiResponse.getCode() == 200) {
                     Toast.makeText(PersonActivity.this, "Successfully saved!", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {

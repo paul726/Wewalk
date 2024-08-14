@@ -4,11 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.nus.wewalk.R;
 
 import java.util.List;
@@ -18,10 +20,11 @@ import java.util.List;
  */
 public class FriendsAddAdapter extends RecyclerView.Adapter<FriendsAddAdapter.ViewHolder> {
 
-    private List<String> dataList;
+    private List<UserInfoBean> dataList;
     private Context mContext;
+    private OnItemClickListener onItemClickListener;
 
-    public FriendsAddAdapter(Context mContext, List<String> dataList) {
+    public FriendsAddAdapter(Context mContext, List<UserInfoBean> dataList) {
         this.dataList = dataList;
         this.mContext = mContext;
     }
@@ -34,6 +37,15 @@ public class FriendsAddAdapter extends RecyclerView.Adapter<FriendsAddAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+        UserInfoBean userInfoBean = dataList.get(position);
+        holder.mTvName.setText(userInfoBean.getUserName());
+        Glide.with(mContext).load(userInfoBean.getAvatar()).centerCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        holder.itemView.setOnClickListener(v -> {
+            if (onItemClickListener != null) {
+                onItemClickListener.onSuccess(userInfoBean, position);
+            }
+        });
     }
 
     @Override
@@ -50,5 +62,14 @@ public class FriendsAddAdapter extends RecyclerView.Adapter<FriendsAddAdapter.Vi
             this.mIcHead = itemView.findViewById(R.id.ic_head);
             this.mTvName = itemView.findViewById(R.id.tv_name);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onSuccess(UserInfoBean data, int pos);
+    }
+
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 }

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -41,16 +42,16 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="63"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/iv1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_pwd_open" />
+                android:src="@mipmap/ic_pwd_close" />
         </LinearLayout>
     </LinearLayout>
 
@@ -87,16 +88,16 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="163"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/iv2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_pwd_open" />
+                android:src="@mipmap/ic_pwd_close" />
         </LinearLayout>
     </LinearLayout>
 
@@ -132,16 +133,16 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="15dp"
-                android:text="63"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <ImageView
+                android:id="@+id/iv3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_marginRight="15dp"
-                android:src="@mipmap/ic_pwd_open" />
+                android:src="@mipmap/ic_pwd_close" />
         </LinearLayout>
     </LinearLayout>
 

@@ -17,15 +17,19 @@
         android:gravity="center_vertical"
         android:padding="12dp">
 
-        <TextView
+        <EditText
+            android:id="@+id/et_search"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Search frinds"
+            android:background="@null"
+            android:hint="Search frinds"
+            android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="14sp" />
 
         <ImageView
+            android:id="@+id/iv_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

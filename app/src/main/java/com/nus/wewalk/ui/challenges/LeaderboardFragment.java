@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.nus.wewalk.databinding.FragmentLeaderBinding;
+import com.nus.wewalk.utilities.SystemBarUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class LeaderboardFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SystemBarUtils.setStatusBarColor(getActivity(), binding.statusBar);
         setupRecyclerView();
     }
 

@@ -36,6 +36,8 @@ logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-intercep
 converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit"}
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit"}
 
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

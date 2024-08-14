@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.nus.wewalk.R;
 
 import java.util.List;
@@ -19,10 +20,10 @@ import java.util.List;
  */
 public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.ViewHolder> {
 
-    private List<String> dataList;
+    private List<UserInfoBean> dataList;
     private Context mContext;
 
-    public FriendsListAdapter(Context mContext, List<String> dataList) {
+    public FriendsListAdapter(Context mContext, List<UserInfoBean> dataList) {
         this.dataList = dataList;
         this.mContext = mContext;
     }
@@ -35,6 +36,9 @@ public class FriendsListAdapter extends RecyclerView.Adapter<FriendsListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        UserInfoBean userInfoBean = dataList.get(position);
+        holder.mTvName.setText(userInfoBean.getUserName());
+        Glide.with(mContext).load(userInfoBean.getAvatar()).centerCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
     }
 
     @Override
