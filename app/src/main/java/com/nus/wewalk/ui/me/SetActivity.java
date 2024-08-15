@@ -44,6 +44,8 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         mineViewModel.saveBeanLiveData.observe(this, new Observer<ApiResponse>() {
             @Override
             public void onChanged(ApiResponse apiResponse) {
+                XShareCacheUtils.getInstance().remove("token");
+                XShareCacheUtils.getInstance().remove("uid");
                 startActivity(new Intent(SetActivity.this, LoginActivity.class));
                 finish();
             }
@@ -55,7 +57,6 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         if (v.getId() == R.id.bt_out) {
             String uid = XShareCacheUtils.getInstance().getString("uid");
             mineViewModel.logout(uid);
-
         } else if (v.getId() == R.id.bt_pwd) {
             //password
             startActivity(new Intent(this, PwdActivity.class));

@@ -1,16 +1,13 @@
 package com.nus.wewalk;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nus.wewalk.ui.login.LoginActivity;
-import com.nus.wewalk.utilities.UserInstance;
 import com.nus.wewalk.utilities.XShareCacheUtils;
 
 public class SplashActivity extends AppCompatActivity {

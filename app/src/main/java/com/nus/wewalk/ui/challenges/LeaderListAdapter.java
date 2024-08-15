@@ -1,6 +1,7 @@
 package com.nus.wewalk.ui.challenges;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,13 +37,16 @@ public class LeaderListAdapter extends RecyclerView.Adapter<LeaderListAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        int num = position + 3;
-        int num1 = position + 4;
-        holder.mTvNum.setText("" + num1);
-        RankBean rankBean = dataList.get(num);
+        RankBean rankBean = dataList.get(position);
+
+        holder.mTvNum.setText(rankBean.getOrder());
         holder.mTvName.setText(rankBean.getUserName());
-        Glide.with(mContext).load(rankBean.getAvatar())
-                .circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        if (!TextUtils.isEmpty(rankBean.getAvatar())) {
+            Glide.with(mContext).load(rankBean.getAvatar())
+                    .circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        } else {
+            holder.mIcHead.setImageResource(R.mipmap.ic_head);
+        }
 
 //        if (position == 0) {
 //            holder.mLin.setBackgroundResource(R.drawable.bg_lead_line);

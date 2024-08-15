@@ -163,6 +163,7 @@
                     android:textColor="@color/white"
                     android:textSize="14sp" />
             </LinearLayout>
+
             <FrameLayout
                 android:layout_width="55dp"
                 android:layout_height="55dp"
@@ -197,5 +198,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle"
         android:layout_width="match_parent"
+        android:layout_marginBottom="50dp"
         android:layout_height="match_parent" />
 </LinearLayout>

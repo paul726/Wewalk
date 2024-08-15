@@ -1,6 +1,7 @@
 package com.nus.wewalk.ui.me;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,12 @@ public class FriendsAddAdapter extends RecyclerView.Adapter<FriendsAddAdapter.Vi
 
         UserInfoBean userInfoBean = dataList.get(position);
         holder.mTvName.setText(userInfoBean.getUserName());
-        Glide.with(mContext).load(userInfoBean.getAvatar()).circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        if (!TextUtils.isEmpty(userInfoBean.getAvatar())) {
+            Glide.with(mContext).load(userInfoBean.getAvatar())
+                    .circleCrop().placeholder(R.mipmap.ic_head).into(holder.mIcHead);
+        }else {
+            holder.mIcHead.setImageResource(R.mipmap.ic_head);
+        }
         holder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
                 onItemClickListener.onSuccess(userInfoBean, position);

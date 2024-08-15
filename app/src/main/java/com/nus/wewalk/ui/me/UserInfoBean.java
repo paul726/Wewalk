@@ -8,8 +8,8 @@ public class UserInfoBean {
     private int sex;
     private String status;
     private int age;
-    private String height;
-    private String weight;
+    private int height;
+    private int weight;
     private String avatar;
 
     public String getUserId() {
@@ -52,19 +52,19 @@ public class UserInfoBean {
         this.age = age;
     }
 
-    public String getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
-    public String getWeight() {
+    public int getWeight() {
         return weight;
     }
 
-    public void setWeight(String weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 

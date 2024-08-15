@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/re_bg"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="15dp"
     android:layout_marginTop="5dp"
     android:layout_marginRight="15dp"
     android:layout_marginBottom="@dimen/dp_5"
-    android:background="@drawable/bg_lead_loe"
     android:padding="16dp">
 
-    <ImageView
-        android:id="@+id/ivNotificationIcon"
+    <FrameLayout
+        android:id="@+id/fr"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:src="@mipmap/ic_rctx" />
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivNotificationIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:src="@mipmap/ic_rctx" />
+
+        <ImageView
+            android:id="@+id/iv_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:src="@drawable/bg_red_yuan"
+            android:visibility="visible" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/tvNotificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_toRightOf="@+id/ivNotificationIcon"
+        android:layout_toRightOf="@+id/fr"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="Notification Title" />
@@ -33,11 +47,14 @@
         android:layout_below="@+id/tvNotificationTitle"
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
-        android:layout_toRightOf="@+id/ivNotificationIcon"
+        android:layout_toRightOf="@+id/fr"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textSize="14sp"
         tools:text="This is a notification message" />
 
     <TextView
+        android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

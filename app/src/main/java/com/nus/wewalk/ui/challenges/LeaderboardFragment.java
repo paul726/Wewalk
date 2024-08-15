@@ -48,12 +48,12 @@ public class LeaderboardFragment extends Fragment {
 
         //数据请求
         String uid = XShareCacheUtils.getInstance().getString("uid");
-        challengesViewModel.getFriendStepRank(uid);
+        challengesViewModel.getFriendStepRank("3");
         //
         challengesViewModel.rankListLiveData.observe(getActivity(), new Observer<List<RankBean>>() {
             @Override
             public void onChanged(List<RankBean> rankBeanList) {
-                if (!rankBeanList.isEmpty()) {
+                if (rankBeanList!=null&&!rankBeanList.isEmpty()) {
                     if (rankBeanList.get(0) != null) {
                         binding.tvOneName.setText(rankBeanList.get(0).getUserName());
                         binding.tvOneNum.setText(rankBeanList.get(0).getSteps());
@@ -72,8 +72,11 @@ public class LeaderboardFragment extends Fragment {
                         Glide.with(getActivity()).load(rankBeanList.get(2).getAvatar())
                                 .circleCrop().placeholder(R.mipmap.ic_head).into(binding.ivThree);
                     }
-                    leaderListAdapter = new LeaderListAdapter(getActivity(), rankBeanList);
-                    binding.recycle.setAdapter(leaderListAdapter);
+                    if (rankBeanList.size() > 3) {
+                        rankBeanList=rankBeanList.subList(3,rankBeanList.size());
+                        leaderListAdapter = new LeaderListAdapter(getActivity(), rankBeanList);
+                        binding.recycle.setAdapter(leaderListAdapter);
+                    }
                 }
             }
         });

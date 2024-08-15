@@ -1,11 +1,13 @@
 package com.nus.wewalk.ui.me;
 
+import androidx.health.platform.client.proto.Api;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.nus.wewalk.net.ApiResponse;
 import com.nus.wewalk.net.HttpUtil;
 import com.nus.wewalk.ui.login.data.LoginBean;
+import com.nus.wewalk.utilities.XShareCacheUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,16 +28,18 @@ public class MineViewModel extends ViewModel {
      * 个人资料
      */
     public void getUserInfo() {
-        HttpUtil.restAPI.getUserInfo().enqueue(new Callback<UserInfoBean>() {
+        String uid = XShareCacheUtils.getInstance().getString("uid");
+        HttpUtil.restAPI.getUserInfo(uid).enqueue(new Callback<ApiResponse<UserInfoBean>>() {
             @Override
-            public void onResponse(Call<UserInfoBean> call, Response<UserInfoBean> response) {
-                userInfoBeanLiveData.setValue(response.body());
+            public void onResponse(Call<ApiResponse<UserInfoBean>> call, Response<ApiResponse<UserInfoBean>> response) {
+                userInfoBeanLiveData.setValue(response.body().getData());
             }
 
             @Override
-            public void onFailure(Call<UserInfoBean> call, Throwable throwable) {
+            public void onFailure(Call<ApiResponse<UserInfoBean>> call, Throwable throwable) {
                 userInfoBeanLiveData.setValue(null);
             }
+
         });
     }
 
@@ -48,24 +52,22 @@ public class MineViewModel extends ViewModel {
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 saveBeanLiveData.setValue(response.body());
             }
-
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable throwable) {
                 saveBeanLiveData.setValue(null);
             }
         });
     }
-
     /**
      * 密码修改
      */
     public void updatePwd(String oid, String newPwd) {
-        HttpUtil.restAPI.updatePwd(oid, newPwd).enqueue(new Callback<ApiResponse>() {
+        String uid = XShareCacheUtils.getInstance().getString("uid");
+        HttpUtil.restAPI.updatePwd(oid, newPwd,uid).enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 saveBeanLiveData.setValue(response.body());
             }
-
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable throwable) {
                 saveBeanLiveData.setValue(null);
@@ -96,14 +98,16 @@ public class MineViewModel extends ViewModel {
      * 查询好友
      */
     public void getFriends(String oid, String newPwd) {
-        HttpUtil.restAPI.getFriends(oid, newPwd).enqueue(new Callback<List<UserInfoBean>>() {
+        HttpUtil.restAPI.getFriends(oid, newPwd).enqueue(new Callback<ApiResponse<List<UserInfoBean>>>() {
             @Override
-            public void onResponse(Call<List<UserInfoBean>> call, Response<List<UserInfoBean>> response) {
-                friendsListLiveData.setValue(response.body());
+            public void onResponse(Call<ApiResponse<List<UserInfoBean>>> call, Response<ApiResponse<List<UserInfoBean>>> response) {
+                if (response.isSuccessful()) {
+                    friendsListLiveData.setValue(response.body().getData());
+                }
             }
 
             @Override
-            public void onFailure(Call<List<UserInfoBean>> call, Throwable throwable) {
+            public void onFailure(Call<ApiResponse<List<UserInfoBean>>> call, Throwable throwable) {
                 friendsListLiveData.setValue(null);
             }
         });

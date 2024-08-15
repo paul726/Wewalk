@@ -56,5 +56,17 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
+
+    //图片加载
     implementation("com.github.bumptech.glide:glide:4.16.0")
+    implementation("com.github.bumptech.glide:okhttp3-integration:4.11.0")
+
+    //图片选择与压缩
+    implementation("io.github.lucksiege:pictureselector:v3.11.2")
+    implementation("io.github.lucksiege:compress:v3.11.2")
+
+    //图表
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+
 }

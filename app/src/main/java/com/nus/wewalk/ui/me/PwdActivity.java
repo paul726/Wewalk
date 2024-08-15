@@ -74,7 +74,6 @@ public class PwdActivity extends AppCompatActivity {
                 }
             }
         });
-
         binding.iv1.setOnClickListener(v -> {
             //展示密码
             if (isShow) {

@@ -77,25 +77,25 @@
                 android:id="@+id/tv_step_counts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="126"
                 android:textColor="#61CBAB"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_step_title"
-                tools:text="9,999" />
+                app:layout_constraintTop_toBottomOf="@id/tv_step_title" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_distance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="10km"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@id/tv_distance_title"
                 app:layout_constraintEnd_toEndOf="@id/tv_distance_title"
                 app:layout_constraintStart_toStartOf="@id/tv_distance_title"
-                app:layout_constraintTop_toBottomOf="@id/tv_step_counts"
-                tools:text="10km" />
+                app:layout_constraintTop_toBottomOf="@id/tv_step_counts" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_distance_title"
@@ -114,12 +114,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:text="1233C"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toTopOf="@id/tv_calories_title"
                 app:layout_constraintEnd_toEndOf="@id/tv_calories_title"
                 app:layout_constraintStart_toStartOf="@id/tv_calories_title"
-                app:layout_constraintTop_toBottomOf="@id/tv_step_counts"
-                tools:text="1233C" />
+                app:layout_constraintTop_toBottomOf="@id/tv_step_counts" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_calories_title"
@@ -135,6 +135,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
+            android:id="@+id/re"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -187,6 +188,51 @@
                 android:textColor="@color/white" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/white_bg1"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/re"
+            app:layout_constraintStart_toStartOf="@id/re"
+            app:layout_constraintTop_toBottomOf="@id/re">
+
+            <TextView
+                android:id="@+id/tv_step"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/ic_jiaobu"
+                android:drawablePadding="15dp"
+                android:padding="15dp"
+                android:text="Take steps"
+                android:textColor="#ff000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/bt_ady"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/green_radius_5"
+                android:drawableRight="@mipmap/ic_xaingxai"
+                android:drawablePadding="@dimen/dp_5"
+                android:paddingLeft="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_5"
+                android:text="Daily"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/chart1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+
+        </RelativeLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

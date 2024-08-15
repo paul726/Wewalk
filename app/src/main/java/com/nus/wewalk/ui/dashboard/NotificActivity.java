@@ -38,22 +38,21 @@ public class NotificActivity extends AppCompatActivity {
     private void initView() {
         binding.top.ivBack.setOnClickListener(v -> finish());
         binding.top.tvTitle.setText("Notifications");
-        binding.top.ivRight.setImageResource(R.mipmap.ic_add);
         binding.recycle.setLayoutManager(new LinearLayoutManager(this));
-
         setupRecyclerView();
     }
 
     private void setupRecyclerView() {
-        dashboardViewModel.getNotific(page);
+
+        dashboardViewModel.getNoticeList(page);
 
         dashboardViewModel.notifications.observe(this, new Observer<List<Notification>>() {
             @Override
             public void onChanged(List<Notification> notifications) {
+                NotificationAdapter notificationAdapter = new NotificationAdapter(NotificActivity.this, notifications);
+                binding.recycle.setAdapter(notificationAdapter);
             }
         });
-
-
     }
 
 }

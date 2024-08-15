@@ -57,7 +57,8 @@ public class HttpUtil {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(okHttpClient)
-                .addConverterFactory(new ApiResponseConverterFactory())
+//                .addConverterFactory(new ApiResponseConverterFactory())   接口理想话枪口下自定义
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
         restAPI = retrofit.create(RestAPI.class);
     }

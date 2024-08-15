@@ -2,20 +2,10 @@ package com.nus.wewalk.ui.login;
 
 import static com.nus.wewalk.utilities.Utils.hideStatusBar;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowInsetsController;
-import android.view.WindowManager;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -25,7 +15,6 @@ import com.nus.wewalk.MainActivity;
 import com.nus.wewalk.databinding.ActivityLoginBinding;
 import com.nus.wewalk.ui.login.data.LoginBean;
 import com.nus.wewalk.ui.register.RegisterActivity;
-import com.nus.wewalk.utilities.UserInstance;
 import com.nus.wewalk.utilities.XShareCacheUtils;
 
 public class LoginActivity extends AppCompatActivity {
@@ -61,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onChanged(LoginBean loginBean) {
                 XShareCacheUtils.getInstance().putString("token", loginBean.getAccess_token());
                 XShareCacheUtils.getInstance().putString("name", binding.etUsername.getText().toString());
+                XShareCacheUtils.getInstance().putString("uid", loginBean.getUserId());
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();

@@ -9,6 +9,7 @@ public class RankBean {
     private Object progress;
     private String userName;
     private String avatar;
+    private String order;
 
     public String getSteps() {
         return steps;
@@ -64,5 +65,13 @@ public class RankBean {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
     }
 }

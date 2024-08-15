@@ -5,8 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class LoginBean {
 
     private String access_token;
-
     private int expires_in;
+    private String userId;
 
     public String getAccess_token() {
         return access_token;
@@ -22,5 +22,14 @@ public class LoginBean {
 
     public void setExpires_in(int expires_in) {
         this.expires_in = expires_in;
+    }
+
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

@@ -1,9 +1,13 @@
 package com.nus.wewalk.ui.dashboard;
 
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,63 +19,57 @@ import java.util.List;
 
 public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapter.NotificationViewHolder> {
 
-    private List<Notification> notifications = new ArrayList<>();
+    private List<Notification> notifications;
+    private Context context;
+
+    public NotificationAdapter(Context context, List<Notification> notifications) {
+        this.notifications = notifications;
+        this.context = context;
+    }
 
     @Override
     public NotificationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_notification, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_notification, parent, false);
         return new NotificationViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(NotificationViewHolder holder, int position) {
-//        Notification notification = notifications.get(position);
-//        holder.tvTitle.setText(notification.getTitle());
-//        holder.tvMessage.setText(notification.getMessage());
-//
-//        // Set icon based on notification type
-//        int iconResId;
-//        switch (notification.getType()) {
-//            case STEP_REMINDER:
-//                iconResId = R.drawable.ic_step_reminder;
-//                break;
-//            case ACHIEVEMENT:
-//                iconResId = R.drawable.ic_achievement;
-//                break;
-//            case FRIEND_ACTIVITY:
-//                iconResId = R.drawable.ic_friend_activity;
-//                break;
-//            case SYSTEM_UPDATE:
-//                iconResId = R.drawable.ic_system_update;
-//                break;
-//            case CHALLENGE_INVITATION:
-//                iconResId = R.drawable.ic_challenge_invitation;
-//                break;
-//            default:
-//                iconResId = R.drawable.ic_notification_default;
-//        }
-//        holder.ivIcon.setImageResource(iconResId);
+        Notification notification = notifications.get(position);
+        holder.tvMessage.setText(notification.getNoticeContent());
+        // Set icon based on notification type
+        if (TextUtils.equals("1", notification.getNoticeType())) {
+            holder.ivIcon.setImageResource(R.mipmap.ic_rctx);
+            holder.tvTitle.setText("Daily reminders");
+            holder.mReBg.setBackgroundResource(R.drawable.bg_lead_loe);
+        } else {
+            holder.ivIcon.setImageResource(R.mipmap.ic_xitsxx);
+            holder.tvTitle.setText("System notifications");
+            holder.mReBg.setBackgroundResource(R.drawable.bg_orange_loe);
+        }
+        holder.itemView.setOnClickListener(v -> {
+            context.startActivity(new Intent(context, NotificInfoActivity.class).putExtra("id", notification.getNoticeId()+""));
+        });
     }
 
     @Override
     public int getItemCount() {
-        return notifications.size();
+        return notifications == null ? 0 : notifications.size();
     }
 
-    public void setNotifications(List<Notification> notifications) {
-        this.notifications = notifications;
-        notifyDataSetChanged();
-    }
-
-    class NotificationViewHolder extends RecyclerView.ViewHolder {
+    public class NotificationViewHolder extends RecyclerView.ViewHolder {
         ImageView ivIcon;
         TextView tvTitle, tvMessage;
+        ImageView mIvRead;
+        RelativeLayout mReBg;
 
         NotificationViewHolder(View itemView) {
             super(itemView);
             ivIcon = itemView.findViewById(R.id.ivNotificationIcon);
             tvTitle = itemView.findViewById(R.id.tvNotificationTitle);
             tvMessage = itemView.findViewById(R.id.tvNotificationMessage);
+            this.mIvRead = itemView.findViewById(R.id.iv_read);
+            this.mReBg = itemView.findViewById(R.id.re_bg);
         }
     }
 }

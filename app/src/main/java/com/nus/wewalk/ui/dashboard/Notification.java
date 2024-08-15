@@ -2,7 +2,6 @@ package com.nus.wewalk.ui.dashboard;
 
 public class Notification {
 
-
         private String createBy;
         private String createTime;
         private String updateBy;

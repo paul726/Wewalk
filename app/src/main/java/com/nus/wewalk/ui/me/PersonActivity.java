@@ -48,8 +48,8 @@ public class PersonActivity extends AppCompatActivity {
             public void onChanged(UserInfoBean loginBean) {
                 binding.tvNickName.setText(loginBean.getUserName());
                 binding.etAde.setText(loginBean.getAge() + "");
-                binding.etSg.setText(loginBean.getHeight());
-                binding.etTz.setText(loginBean.getWeight());
+                binding.etSg.setText(loginBean.getHeight() + "");
+                binding.etTz.setText(loginBean.getWeight() + "");
                 //性别：1-男 2-女
                 if (loginBean.getSex() == 1) {
                     binding.tvNan.setBackgroundResource(R.drawable.bg_green_write_line);
