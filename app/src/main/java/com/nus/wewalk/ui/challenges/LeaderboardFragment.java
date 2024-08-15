@@ -78,8 +78,6 @@ public class LeaderboardFragment extends Fragment {
                         leaderListAdapter = new LeaderListAdapter(getActivity(), rankBeanList);
                         binding.recycle.setAdapter(leaderListAdapter);
                     }
-                } else {
-                    Toast.makeText(getActivity(), "No data", Toast.LENGTH_SHORT).show();
                 }
             }
         });
