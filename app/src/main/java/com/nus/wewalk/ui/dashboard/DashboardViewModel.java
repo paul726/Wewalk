@@ -52,7 +52,6 @@ public class DashboardViewModel extends ViewModel {
                     countNum.setValue(response.body().getData());
                 }
             }
-
             @Override
             public void onFailure(Call<ApiResponse<NoticeNewBean>> call, Throwable throwable) {
                 countNum.setValue(null);

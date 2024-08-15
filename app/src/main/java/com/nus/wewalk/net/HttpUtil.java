@@ -43,14 +43,6 @@ public class HttpUtil {
                 .connectTimeout(60, TimeUnit.SECONDS);
 
         builder.addInterceptor(httpLoggingInterceptor);
-        builder.addInterceptor(chain -> {
-            Request original = chain.request();
-            Request request = original.newBuilder()
-                    .header("Authorization", "Bearer " + XShareCacheUtils.getInstance().getString("token"))
-                    .method(original.method(), original.body())
-                    .build();
-            return chain.proceed(request);
-        });
 
         OkHttpClient okHttpClient = builder.build();
 

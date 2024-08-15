@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,12 +49,12 @@ public class LeaderboardFragment extends Fragment {
 
         //数据请求
         String uid = XShareCacheUtils.getInstance().getString("uid");
-        challengesViewModel.getFriendStepRank("3");
+        challengesViewModel.getFriendStepRank(uid);
         //
         challengesViewModel.rankListLiveData.observe(getActivity(), new Observer<List<RankBean>>() {
             @Override
             public void onChanged(List<RankBean> rankBeanList) {
-                if (rankBeanList!=null&&!rankBeanList.isEmpty()) {
+                if (rankBeanList != null && !rankBeanList.isEmpty()) {
                     if (rankBeanList.get(0) != null) {
                         binding.tvOneName.setText(rankBeanList.get(0).getUserName());
                         binding.tvOneNum.setText(rankBeanList.get(0).getSteps());
@@ -73,10 +74,12 @@ public class LeaderboardFragment extends Fragment {
                                 .circleCrop().placeholder(R.mipmap.ic_head).into(binding.ivThree);
                     }
                     if (rankBeanList.size() > 3) {
-                        rankBeanList=rankBeanList.subList(3,rankBeanList.size());
+                        rankBeanList = rankBeanList.subList(3, rankBeanList.size());
                         leaderListAdapter = new LeaderListAdapter(getActivity(), rankBeanList);
                         binding.recycle.setAdapter(leaderListAdapter);
                     }
+                } else {
+                    Toast.makeText(getActivity(), "No data", Toast.LENGTH_SHORT).show();
                 }
             }
         });

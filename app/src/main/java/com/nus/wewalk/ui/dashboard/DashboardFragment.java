@@ -47,9 +47,11 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         binding.tvDate.setText(getDate());
         //同时数量
         dashboardViewModel.countNum();
-        dashboardViewModel.countNum.observe(getActivity(), s -> {
-            binding.tvNotification.setText("Notification " + s.getCount());
-            binding.tvNotificationContent.setText(s.getMsg());
+        dashboardViewModel.countNum.observe(getActivity(), data -> {
+            if(data!=null) {
+                binding.tvNotification.setText("Notification " + data.getCount());
+                binding.tvNotificationContent.setText(data.getMsg());
+            }
         });
     }
 
