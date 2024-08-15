@@ -34,7 +34,7 @@ public class XImageUtils {
     }
 
     public static void loadRoundImage(Context context, String imageUrl, ImageView imageView) {
-        Glide.with(context).load(imageUrl).apply(new RequestOptions().centerCrop().bitmapTransform(new RoundedCorners(20))
+        Glide.with(context).load(imageUrl).apply(new RequestOptions().bitmapTransform(new RoundedCorners(20))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)).disallowHardwareConfig().into(imageView);
     }
 }
