@@ -181,9 +181,9 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar1"
-                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="30dp"
                         android:layout_height="200dp"
                         android:max="100"
@@ -205,7 +205,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar2"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="30dp"
@@ -229,7 +229,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar3"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="30dp"
@@ -253,7 +253,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar4"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="30dp"
@@ -277,7 +277,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar5"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="30dp"
@@ -301,7 +301,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar6"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="30dp"
@@ -325,7 +325,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <com.nus.wewalk.utilities.VerticalProgressBar
+                    <ProgressBar
                         android:id="@+id/progressBar7"
                         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                         android:layout_width="30dp"
