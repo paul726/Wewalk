@@ -74,10 +74,10 @@ public class MineFragment extends Fragment implements View.OnClickListener {
         String head = XShareCacheUtils.getInstance().getString("head");
         String bg = XShareCacheUtils.getInstance().getString("bg");
         if (!TextUtils.isEmpty(head)) {
-            XImageUtils.load(getActivity(), head, binding.ivHead);
+            XImageUtils.loadRoundImage(getActivity(), head, binding.ivHead);
         }
         if (!TextUtils.isEmpty(bg)) {
-            XImageUtils.load(getActivity(), bg, binding.ivBg);
+            XImageUtils.loadRoundImage(getActivity(), bg, binding.ivBg);
         }
     }
 
@@ -105,13 +105,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                 public void onResult(ArrayList<LocalMedia> result) {
                                     for (LocalMedia media : result) {
                                         if (!TextUtils.isEmpty(media.getCompressPath())) {
-                                            XImageUtils.load(getActivity(), media.getCompressPath(), binding.ivBg);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getCompressPath(), binding.ivBg);
                                             XShareCacheUtils.getInstance().putString("bg", media.getCompressPath());
                                         } else if (!TextUtils.isEmpty(media.getRealPath())) {
-                                            XImageUtils.load(getActivity(), media.getRealPath(), binding.ivBg);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getRealPath(), binding.ivBg);
                                             XShareCacheUtils.getInstance().putString("bg", media.getRealPath());
                                         } else if (!TextUtils.isEmpty(media.getPath())) {
-                                            XImageUtils.load(getActivity(), media.getPath(), binding.ivBg);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getPath(), binding.ivBg);
                                             XShareCacheUtils.getInstance().putString("bg", media.getPath());
                                         }
                                     }
@@ -131,13 +131,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                 public void onResult(ArrayList<LocalMedia> result) {
                                     for (LocalMedia media : result) {
                                         if (!TextUtils.isEmpty(media.getCompressPath())) {
-                                            XImageUtils.load(getActivity(), media.getCompressPath(), binding.ivBg);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getCompressPath(), binding.ivBg);
                                             XShareCacheUtils.getInstance().putString("bg", media.getCompressPath());
                                         } else if (!TextUtils.isEmpty(media.getRealPath())) {
-                                            XImageUtils.load(getActivity(), media.getRealPath(), binding.ivBg);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getRealPath(), binding.ivBg);
                                             XShareCacheUtils.getInstance().putString("bg", media.getRealPath());
                                         } else if (!TextUtils.isEmpty(media.getPath())) {
-                                            XImageUtils.load(getActivity(), media.getPath(), binding.ivBg);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getPath(), binding.ivBg);
                                             XShareCacheUtils.getInstance().putString("bg", media.getPath());
                                         }
                                     }
@@ -160,13 +160,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                 public void onResult(ArrayList<LocalMedia> result) {
                                     for (LocalMedia media : result) {
                                         if (!TextUtils.isEmpty(media.getCompressPath())) {
-                                            XImageUtils.load(getActivity(), media.getCompressPath(), binding.ivHead);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getCompressPath(), binding.ivHead);
                                             XShareCacheUtils.getInstance().putString("head", media.getCompressPath());
                                         } else if (!TextUtils.isEmpty(media.getRealPath())) {
-                                            XImageUtils.load(getActivity(), media.getRealPath(), binding.ivHead);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getRealPath(), binding.ivHead);
                                             XShareCacheUtils.getInstance().putString("head", media.getRealPath());
                                         } else if (!TextUtils.isEmpty(media.getPath())) {
-                                            XImageUtils.load(getActivity(), media.getPath(), binding.ivHead);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getPath(), binding.ivHead);
                                             XShareCacheUtils.getInstance().putString("head", media.getPath());
                                         }
                                     }
@@ -187,13 +187,13 @@ public class MineFragment extends Fragment implements View.OnClickListener {
                                 public void onResult(ArrayList<LocalMedia> result) {
                                     for (LocalMedia media : result) {
                                         if (!TextUtils.isEmpty(media.getCompressPath())) {
-                                            XImageUtils.load(getActivity(), media.getCompressPath(), binding.ivHead);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getCompressPath(), binding.ivHead);
                                             XShareCacheUtils.getInstance().putString("head", media.getCompressPath());
                                         } else if (!TextUtils.isEmpty(media.getRealPath())) {
-                                            XImageUtils.load(getActivity(), media.getRealPath(), binding.ivHead);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getRealPath(), binding.ivHead);
                                             XShareCacheUtils.getInstance().putString("head", media.getRealPath());
                                         } else if (!TextUtils.isEmpty(media.getPath())) {
-                                            XImageUtils.load(getActivity(), media.getPath(), binding.ivHead);
+                                            XImageUtils.loadRoundImage(getActivity(), media.getPath(), binding.ivHead);
                                             XShareCacheUtils.getInstance().putString("head", media.getPath());
                                         }
                                     }
